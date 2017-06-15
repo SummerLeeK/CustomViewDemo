@@ -219,9 +219,9 @@ public class PathDemoView extends View {
 //                    Log.i("data", "第二象限 i" + i + "x" + x + "y" + y);
                 } else if (x - center < 0 && y - center > 0 && x + textRadius != center && y - textRadius != center) {
                     //第四象限
-                    x = x - textRect.width() / 2;
-                    y = y + textHeight + fontMetrics.bottom;
-//                    Log.i("data", "第四象限 i" + i + "x" + x + "y" + y);
+                    x = x - textRect.width();
+                    y = y + textHeight;
+                    Log.i("data", "第四象限 i" + i + "x" + x + "y" + y);
                 } else if (x - center < 0 && y - center < 0 && x + textRadius != center && y + textRadius != center) {
                     //第三象限
                     x = (float) (x - textRect.width() / 1.2);
@@ -234,22 +234,18 @@ public class PathDemoView extends View {
                         if (x > center) {
                             x = center + radius + textHeight / 2;
                             y = center + fontMetrics.bottom;
-                            Log.i("info", data.text);
                         } else {
                             x = x - textPaint.measureText(data.text);
                             y = center + fontMetrics.bottom;
-                            Log.i("info", data.text);
                         }
                     } else if (y - center == textRadius || y + textRadius == center) {
                         //在Y轴上
                         if (y > center) {
                             y = y + textHeight;
                             x = x-textPaint.measureText(data.text)/2;
-                            Log.i("info", data.text);
                         } else {
                             y = y-textHeight/2;
                             x = x-textPaint.measureText(data.text)/2;
-                            Log.i("info", data.text);
                         }
                     }
                 }
@@ -285,12 +281,12 @@ public class PathDemoView extends View {
                 dataPointY = y;
                 dataPath.moveTo(dataPointX, dataPointY);
 //                canvas.drawCircle(dataPointX,dataPointY,(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()),dataPaint);
-                Log.i("data", "dataPointX" + dataPointX + "dataPointY" + dataPointY);
+//                Log.i("data", "dataPointX" + dataPointX + "dataPointY" + dataPointY);
 
             } else {
                 x = (float) (center + radius * Math.cos(Math.toRadians(angle * i)));
                 y = (float) (center + radius * Math.sin(Math.toRadians(angle * i)));
-                Log.i("data", "x" + x + "y" + y);
+//                Log.i("data", "x" + x + "y" + y);
                 if (y - radius == 0) {
                     //平行与X轴
                     dataPointX = center + (x - center) * (data.size / 100);
@@ -307,7 +303,7 @@ public class PathDemoView extends View {
 
                 dataPath.lineTo(dataPointX, dataPointY);
 //                canvas.drawCircle(dataPointX,dataPointY,(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()),dataPaint);
-                Log.i("data", "dataPointX" + dataPointX + "dataPointY" + dataPointY);
+//                Log.i("data", "dataPointX" + dataPointX + "dataPointY" + dataPointY);
             }
         }
 
